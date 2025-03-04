@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion CIEFP-BENIN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
+            background: linear-gradient(to bottom, #026302, #00ff00);
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .btn-ticket { background: lightgray; }
+        .btn-compte { background: lightgray; }
+        .input-field {
+            width: 95%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn-connexion {
+            width: 100%;
+            padding: 10px;
+            
+            color: black;
+            border: 1px solid green;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .info {
+            margin-top: 20px;
+        }
+        .btn-tarifs {
+            display: block;
+            width: 95%;
+            padding: 10px;
+            background: yellow;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+            
+        }
+        th {
+            background-color: #008000;
+            color: white;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="informaticienne.avif" alt="Image Connexion" width="100%" style="border-radius: 10px;"><br>
+        <div class="buttons">
+            <button class="btn btn-ticket">TICKET</button>
+            <button class="btn btn-compte">COMPTE</button>
+        </div>
+        <p>Entrez le nom d'utilisateur et le mot de passe, puis cliquez sur connexion.</p>
+        <input type="text" class="input-field" placeholder="Nom d'utilisateur">
+        <input type="text" class="input-field" placeholder="Mot de passe">
+        <button class="btn-connexion">CONNEXION</button><br>
+        <p>WIFI ZONE</p>
+        <div class="info">
+            <h3>INFORMATIONS</h3>
+            <p>LES TICKETS DE CONNEXION ILLIMITÉ SONT DISPONIBLES ICI APPELEZ LE 54 88 41 20</p>
+        </div>
+        <a href="#" class="btn-tarifs">NOS TARIFS</a>
+        <h3>Forfaits</h3>
+        <table>
+            <tr>
+                <th>TICKET</th>
+                <th>VALIDITEE</th>
+                <th>PRIX</th>
+            </tr>
+            <tr>
+                <td>1HEURE</td>
+                <td>24h</td>
+                <td>100f</td>
+            </tr>
+            <tr>
+                <td>3HEURE</td>
+                <td>24h</td>
+                <td>200f</td>
+            </tr>
+            <tr>
+                <td>1JOUR</td>
+                <td>48h</td>
+                <td>500f</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
