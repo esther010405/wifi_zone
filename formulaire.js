@@ -2,35 +2,39 @@ document.body.innerHTML = `
 
     <div id="mainPage" style="max-width: 400px; margin: auto; padding: 20px; font-family: Arial, sans-serif; text-align: center;">
         <h3>Choisissez un montant</h3>
-        <button class="priceButton" data-price="5000" style="background: red; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">5 000 Fcfa</button>
-        <button class="priceButton" data-price="10000" style="background: red; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">10 000 Fcfa</button>
-        <button class="priceButton" data-price="15000" style="background: red; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">15 000 Fcfa</button>
+        <button class="priceButton" data-price="5000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">5 000 Fcfa</button>
+        <button class="priceButton" data-price="10000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">10 000 Fcfa</button>
+        <button class="priceButton" data-price="15000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">15 000 Fcfa</button>
     </div>
 
-     <div id="paymentPage" style="display: none;position: relative; max-width: 5000px;  padding-top: 20px; font-family: Arial, sans-serif; color: white; text-align: center;">
-        <img src="/home/esther/pageJS/WhatsApp Image 2025-02-26 at 17.18.15.jpeg"  style=" width:500px; height:200px; font-family: Arial, sans-serif;">
-       <div style= "position: absolute; color: white;top: 50%; left: 50%; transform: translate(-50%, -50%); ">
-       <img src="Capture d’écran du 2025-02-27 11-37-46.png"  style="width: 40px; height: 40px;">
-        <p>Total à payer</p>
-        <h2 id="amountDisplay">0 Fcfa</h2>
-       </div>
-    </div>
-    <div id="paymentPage" style="display: none;position: relative; max-width: 5000px; margin: ; padding-top: 20px; font-family: Arial, sans-serif; color: white; text-align: center;">
-     
+    <div class="conteneur" style="position: absolute; color: white;top: 50%; left: 50%; transform: translate(-50%, -50%); " id="conteneur">
+
+
+    <div id="paymentPage" style="display: none;position: relative; width: 500px; height:200px;  padding-top: 20px; font-family: Arial, sans-serif; color: white; text-align: center;background:linear-gradient(135deg, #00c853, #b2ff59)">
+        <!--<img src="/home/esther/pageJS/WhatsApp Image 2025-02-26 at 17.18.15.jpeg"  style=" width:500px; height:200px; font-family: Arial, sans-serif;">-->
+        <div style= "position: absolute; color: white;top: 50%; left: 50%; transform: translate(-50%, -50%); ">
+           <!-- <img src="Capture d’écran du 2025-02-27 11-37-46.png"  style="width: 40px; height: 40px;">-->
+            <p>Total à payer</p>
+            <h2 id="amountDisplay">0 Fcfa</h2>
+        </div>
     </div>
     
     <div id="paymentOptions" style="display: none;padding-bottom:20px;  max-width: 500px; margin-top:-18px; margin-left:auto; margin-right:auto; background: white;  position: relative; text-align: center;">
-        <div style="background-color:rgb(253, 230, 241); padding-bottom:30px" ><br>
+        <div style="background-color:#e0f7fa; padding-bottom:30px" ><br>
+
+
+
+
             <p>Sélectionner un mode de paiement</p>
-        <button id="moov" class="paymentMethod" style="width: 85px; height: 65px;">
-             <img src="moov.jpg" alt="Moov" style="width: 50px; height: 50px;">
-        </button>
-        <button id="mtn" class="paymentMethod" style="width: 85px; height: 65px;">
-            <img src="mtn.jpg" alt="MTN" style="width: 50px; height: 50px;">
-        </button>
-        <button id="celtis" class="paymentMethod" style="width: 85px; height: 65px;">
-            <img src="celtis.png" alt="celtis" style="width: 50px; height: 50px;">
-        </button><br>
+            <button id="moov" class="paymentMethod" style="width: 85px; height: 65px;">
+                <img src="moov.jpg" alt="Moov" style="width: 50px; height: 50px;">
+            </button>
+            <button id="mtn" class="paymentMethod" style="width: 85px; height: 65px;">
+                <img src="mtn.jpg" alt="MTN" style="width: 50px; height: 50px;">
+            </button>
+            <button id="celtis" class="paymentMethod" style="width: 85px; height: 65px;">
+                <img src="celtis.png" alt="celtis" style="width: 50px; height: 50px;">
+            </button><br>
         </div>
      
         <br><br>
@@ -47,20 +51,22 @@ document.body.innerHTML = `
         </div>
            
         <br><br>
-        <button id="pay" style="background: red; color: white; border: none; padding: 15px; width: 75%; cursor: pointer;"></button>
+        <button id="pay" style="background: green; color: white; border: none; padding: 15px; width: 75%; cursor: pointer;"></button>
         <p style="font-size: 12px; color: gray; margin-top: 10px;">🛡 Paiement sécurisé fourni par Kkiapay</p>
     </div>
+    </div>
+
 `;
 
 const style = document.createElement('style');
 style.innerHTML = `
     .gray {
-        background-color: write;
+        background-color: lightgray;
     }
     .red {
-        background-color: red;
+        background-color:rgba(240, 168, 13, 0.97); /* Changed to a shade of green */
+
     }
-   
 `;
 document.head.appendChild(style);
 
@@ -73,9 +79,7 @@ const paymentOptions = document.getElementById("paymentOptions");
 const moov = document.getElementById("moov");
 const mtn = document.getElementById("mtn");
 const celtis = document.getElementById("celtis");
-const payer=document.getElementById("pay")
-
-
+const payer=document.getElementById("pay");
 
 const phoneInputField = document.querySelector("#phone");
 
@@ -105,8 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
 priceButtons.forEach(button => {
     button.addEventListener("click", () => {
         const price = button.getAttribute("data-price");
@@ -118,18 +120,17 @@ priceButtons.forEach(button => {
     });
 });
 
-
-   // Éviter l'entrée de caractères non numériques
-   phoneInputField.addEventListener("keypress", function (event) {
+// Éviter l'entrée de caractères non numériques
+phoneInputField.addEventListener("keypress", function (event) {
     const char = String.fromCharCode(event.keyCode);
     if (!/[0-9]/.test(char)) {
         event.preventDefault(); // Bloque la saisie de caractères non numériques
     }
 });
 
-  // Préfixes Moov par pays
-  const moovPrefixes = [
-    "60", "61", "62", "63", "64", "65", "66", "67", "68", "69",  // Bénin
+// Préfixes Moov par pays
+const moovPrefixes = [
+    "60", "61", "62", "63", "64", "65", "66", "67", "68", "69","58","55", "45", // Bénin
     "01", "02",  // Côte d’Ivoire
     "60", "61", "62", "66", "67",  // Togo
     "66", "67",  // Burkina Faso
@@ -141,7 +142,7 @@ priceButtons.forEach(button => {
 
 // Préfixes MTN par pays (Exemples)
 const mtnPrefixes = [
-    "50", "51", "52", "53", "54", "55", "56", "57", "58", "59",  // Bénin
+    "50", "51", "52", "53", "54", "56", "57", "97","91","96","66","61",   // Bénin
     "07", "08",  // Côte d’Ivoire
     "90", "91", "92", "93", "94", "95",  // Togo
     "70", "71", "72", "73", "74",  // Burkina Faso
@@ -152,8 +153,9 @@ const mtnPrefixes = [
 
 // Préfixes Celtis (Exemples)
 const celtisPrefixes = [
-    "40", "41", "42", "43", "44", "45", "46", "47", "48", "49" // Exemple de préfixes Celtis
+    "40", "41", "42", "43", "44", "46", "47", "48", "49" // Exemple de préfixes Celtis
 ];
+
 phoneInputField.addEventListener("input", function () {
     let value = phoneInputField.value.trim(); 
 
@@ -162,8 +164,18 @@ phoneInputField.addEventListener("input", function () {
     mtn.classList.add("gray");
     celtis.classList.add("gray");
 
-    // Si l'input est vide, on ne fait rien d'autre, on garde les boutons gris
-    if (value === "") return;
+    // Si l'input est vide, réinitialiser les boutons
+if (value === "") {
+    moov.classList.remove("red");
+    moov.classList.add("orange");
+    mtn.classList.remove("red");
+    mtn.classList.add("orange");
+    celtis.classList.remove("red");
+    celtis.classList.add("orange");
+    return;
+}
+
+
 
     // Vérifier le préfixe et changer la couleur
     if (moovPrefixes.some(prefix => value.startsWith(prefix))) {
@@ -179,8 +191,6 @@ phoneInputField.addEventListener("input", function () {
         celtis.classList.add("red");
     }
 });
-
-
 
 document.getElementById("pay").addEventListener("click", function () {
     alert("Paiement en cours...");

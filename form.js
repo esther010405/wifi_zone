@@ -3,9 +3,12 @@ document.addEventListener("DOMContentLoaded", function() {
     body.innerHTML = `
         <h1>Choisissez un montant</h1>
         <div class="button-container">
-            <button class="price-button" data-price="5000">5000 Fcfa</button>
-            <button class="price-button" data-price="10000">10000 Fcfa</button>
-            <button class="price-button" data-price="15000">15000 Fcfa</button>
+<button class="price-button" data-price="5000"">5000 Fcfa</button>
+
+<button class="price-button" data-price="10000"">10000 Fcfa</button>
+
+<button class="price-button" data-price="15000"">15000 Fcfa</button>
+
         </div>
 
         <div id="payment-page" style="display: none; border: 1px solid #ccc; padding: 20px; margin-top: 20px; text-align: center;">
@@ -65,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         operatorDisplay.textContent = detectedOperator;
-        operatorDisplay.style.color = detectedOperator ? "red" : "black";
+operatorDisplay.style.color = detectedOperator ? "darkgreen" : "black";
+
     });
 });
