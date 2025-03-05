@@ -34,20 +34,20 @@ document.body.innerHTML = `
         </div>
      
         <br><br>
-        <label for="phone" class="" style="margin-left:0px">Nom et prénom</label>
-        <input type="text" id="name" placeholder="Nom et Prénoms" style="width: 90%; padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 5px;">
+        <label for="phone" class="" style="display: flex; margin-left: 25px;">Nom et prénom</label>
+        <input type="text" id="name" placeholder="Nom et Prénoms" style="width: 90%; padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 5px;heigth:10px;">
         <br><br>
         
-                <label for="phone" class="" style="margin-left:0px">Numéro de téléphone:</label>
-                <div class="input-group" style="width: 90%; padding: 10px; margin: 5px; ">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="countryDropdown" data-bs-toggle="dropdown" aria-expanded="false">🇧🇯</button>
-                    <ul class="dropdown-menu" id="countryList">
-                    </ul>
-                    <input type="tel" id="phone" class="form-control" placeholder="Entrez votre numéro">
-                </div>
+        <label for="phone" class="" style="display: flex; margin-left: 25px;">Numéro de téléphone</label>
+        <div class="input-group" style="width: 90%; padding: 10px; margin-left: 20px; heigth:10px;">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="countryDropdown" data-bs-toggle="dropdown" aria-expanded="false">🇧🇯</button>
+            <ul class="dropdown-menu" id="countryList">
+            </ul>
+            <input type="tel" id="phone" class="form-control" placeholder="Entrez votre numéro">
+        </div>
            
         <br><br>
-        <button id="pay" style="background: red; color: white; border: none; padding: 15px; width: 75%; cursor: pointer;">Payer</button>
+        <button id="pay" style="background: red; color: white; border: none; padding: 15px; width: 75%; cursor: pointer;"></button>
         <p style="font-size: 12px; color: gray; margin-top: 10px;">🛡 Paiement sécurisé fourni par Kkiapay</p>
     </div>
 `;
@@ -73,6 +73,7 @@ const paymentOptions = document.getElementById("paymentOptions");
 const moov = document.getElementById("moov");
 const mtn = document.getElementById("mtn");
 const celtis = document.getElementById("celtis");
+const payer=document.getElementById("pay")
 
 
 
@@ -110,6 +111,7 @@ priceButtons.forEach(button => {
     button.addEventListener("click", () => {
         const price = button.getAttribute("data-price");
         amountDisplay.innerText = price + " Fcfa";
+        payer.innerText= "Payer "+ price+" Fcfa";
         mainPage.style.display = "none";
         paymentPage.style.display = "block";
         paymentOptions.style.display = "block";
