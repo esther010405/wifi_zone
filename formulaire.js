@@ -7,10 +7,10 @@ document.body.innerHTML = `
         <button class="priceButton" data-price="15000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">15 000 Fcfa</button>
     </div>
 
-    <div class="conteneur" style="position: absolute; color: white;top: 50%; left: 50%; transform: translate(-50%, -50%); " id="conteneur">
+    <div class="conteneur" style="position: absolute;top: 50%; left: 50%; transform: translate(-50%, -50%); " id="conteneur">
 
 
-    <div id="paymentPage" style="display: none;position: relative; width: 500px; height:200px;  padding-top: 20px; font-family: Arial, sans-serif; color: white; text-align: center;background:linear-gradient(135deg, #00c853, #b2ff59)">
+    <div id="paymentPage" style="display: none;position: relative; width: 500px; height:200px;  padding-top: 20px; font-family: Arial, sans-serif; color: white; text-align: center;background:linear-gradient(to top, rgb(81 255 122), rgb(0 231 255 / 94%));">
         <!--<img src="/home/esther/pageJS/WhatsApp Image 2025-02-26 at 17.18.15.jpeg"  style=" width:500px; height:200px; font-family: Arial, sans-serif;">-->
         <div style= "position: absolute; color: white;top: 50%; left: 50%; transform: translate(-50%, -50%); ">
            <!-- <img src="Capture d’écran du 2025-02-27 11-37-46.png"  style="width: 40px; height: 40px;">-->
@@ -19,41 +19,70 @@ document.body.innerHTML = `
         </div>
     </div>
     
-    <div id="paymentOptions" style="display: none;padding-bottom:20px;  max-width: 500px; margin-top:-18px; margin-left:auto; margin-right:auto; background: white;  position: relative; text-align: center;">
-        <div style="background-color:#e0f7fa; padding-bottom:30px" ><br>
+    <div id="paymentOptions" style="display: none;padding-bottom:20px;  max-width: 500px; margin-top:-18px; margin-left:auto; margin-right:auto; ;  position: relative; text-align: center;">
+      <div style="background: linear-gradient(to top, rgb(49 229 109), rgb(81 255 122)); padding-bottom: 30px;">
 
 
 
 
-            <p>Sélectionner un mode de paiement</p>
-            <button id="moov" class="paymentMethod" style="width: 85px; height: 65px;">
+            <p style="color: #00f;">Sélectionner un mode de paiement</p>
+            <button id="moov" class="paymentMethod" style="width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+">
                 <img src="moov.jpg" alt="Moov" style="width: 50px; height: 50px;">
             </button>
-            <button id="mtn" class="paymentMethod" style="width: 85px; height: 65px;">
+            <button id="mtn" class="paymentMethod" style="width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+">
                 <img src="mtn.jpg" alt="MTN" style="width: 50px; height: 50px;">
             </button>
-            <button id="celtis" class="paymentMethod" style="width: 85px; height: 65px;">
+            <button id="celtis" class="paymentMethod" style="width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+">
                 <img src="celtis.png" alt="celtis" style="width: 50px; height: 50px;">
             </button><br>
         </div>
-     
+        <div style="background: white;
+    /* display: flex
+; */
+    flex-direction: column;
+    align-items: center;">
         <br><br>
         <label for="phone" class="" style="display: flex; margin-left: 25px;">Nom et prénom</label>
         <input type="text" id="name" placeholder="Nom et Prénoms" style="width: 90%; padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 5px;heigth:10px;">
         <br><br>
         
         <label for="phone" class="" style="display: flex; margin-left: 25px;">Numéro de téléphone</label>
-        <div class="input-group" style="width: 90%; padding: 10px; margin-left: 20px; heigth:10px;">
+        <div class="input-group" style="    width: 90%;
+    margin: 5px;
+    justify-self: center">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="countryDropdown" data-bs-toggle="dropdown" aria-expanded="false">🇧🇯</button>
             <ul class="dropdown-menu" id="countryList">
             </ul>
-            <input type="tel" id="phone" class="form-control" placeholder="Entrez votre numéro">
+            <input style=" border: 1px solid #ccc; padding:10px" type="tel" id="phone" class="form-control" placeholder="Entrez votre numéro">
         </div>
            
         <br><br>
-        <button id="pay" style="background: green; color: white; border: none; padding: 15px; width: 75%; cursor: pointer;"></button>
+        <button id="pay" style="    background: #1a8719;
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 75%;
+    cursor: pointer;
+    border-radius: 8px;"></button>
         <p style="font-size: 12px; color: gray; margin-top: 10px;">🛡 Paiement sécurisé fourni par Kkiapay</p>
-    </div>
+        </div>
+
+        </div>
     </div>
 
 `;
@@ -64,7 +93,7 @@ style.innerHTML = `
         background-color: lightgray;
     }
     .red {
-        background-color:rgba(240, 168, 13, 0.97); /* Changed to a shade of green */
+        background-color:#fff3cd75 !important; /* Changed to a shade of green */
 
     }
 `;
@@ -136,13 +165,13 @@ const moovPrefixes = [
     "66", "67",  // Burkina Faso
     "88", "89",  // Niger
     "05", "06",  // Gabon
-    "90", "91", "92", "93", "94",  // Tchad
+    , "98","99","95", "94",  // Tchad
     "75", "76"   // Centrafrique
 ];
 
 // Préfixes MTN par pays (Exemples)
 const mtnPrefixes = [
-    "50", "51", "52", "53", "54", "56", "57", "97","91","96","66","61",   // Bénin
+    "50", "51", "52", "53", "54", "56", "57", "97","91","96","66","61", "62","67","92",  // Bénin
     "07", "08",  // Côte d’Ivoire
     "90", "91", "92", "93", "94", "95",  // Togo
     "70", "71", "72", "73", "74",  // Burkina Faso
