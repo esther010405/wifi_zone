@@ -339,13 +339,13 @@ phoneInputField.addEventListener("keypress", function (event) {
 
 // Préfixes Moov par pays
 const moovPrefixes = [
-    
+    '45','55','58','60','63','64','65','68','94','95','98','99',
     "01", "02",  // Côte d’Ivoire
     "60", "61", "62", "66", "67",  // Togo
     "66", "67",  // Burkina Faso
     "88", "89",  // Niger
     "05", "06",  // Gabon
-    , "98", "99", "95", "94",  // Tchad
+     "98", "99", "95", "94",  // Tchad
     "75", "76"   // Centrafrique
 ];
 
@@ -392,35 +392,47 @@ phoneInputField.addEventListener("input", function () {
             value = "01" + value;
             phoneInputField.value = value; // Met à jour le champ téléphone
         }
+
+        // Extraire le préfixe après "01" uniquement pour le Bénin
+        var prefix = value.length >= 4 ? value.substring(2, 4) : "";
+    } else {
+        // Pour les autres pays, extraire directement les 2 premiers chiffres du numéro
+        var prefix = value.length >= 2 ? value.substring(0, 2) : "";
     }
-     // Extraire le préfixe après "01"
-     const prefix = value.substring(2, 4); // Exclut "01"
+
+  
 
     // Vérifier le préfixe et changer la couleur
-    if (moovPrefixes.some(prefix => value.startsWith(prefix))) {
+    if (moovPrefixes.includes(prefix)) {
         moov.classList.remove("gray");
         moov.classList.add("red");
         img1.style.width = "50px";
         img1.style.height = "50px";
     }else{
+        moov.classList.add("gray");
+        moov.classList.remove("red");
         img1.style.width = "35px";
         img1.style.height = "35px"; 
     }
-    if (mtnPrefixes.some(prefix => value.startsWith(prefix))) {
+    if (mtnPrefixes.includes(prefix)) {
         mtn.classList.remove("gray");
         mtn.classList.add("red");
         img2.style.width = "50px";
         img2.style.height = "50px";
     }else{
+        mtn.classList.add("gray");
+        mtn.classList.remove("red");
         img2.style.width = "35px";
         img2.style.height = "35px"; 
     }
-    if (celtisPrefixes.some(prefix => value.startsWith(prefix))) {
+    if (celtisPrefixes.includes(prefix)) {
         celtis.classList.remove("gray");
         celtis.classList.add("red");
         img3.style.width = "50px";
         img3.style.height = "50px";
     }else{
+        celtis.classList.add("gray");
+        celtis.classList.remove("red");
         img3.style.width = "35px";
         img3.style.height = "35px"; 
     }
