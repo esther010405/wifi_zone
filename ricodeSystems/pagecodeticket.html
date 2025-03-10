@@ -83,6 +83,9 @@
             background-color: #008000;
             color: white;
         }
+        .hidden {
+            display: none;
+        }
         
         
     </style>
@@ -94,10 +97,21 @@
             <button class="btn btn-ticket">TICKET</button>
             <button class="btn btn-compte">COMPTE</button>
         </div>
-        <p>Entrez le code de votre Ticket et cliquez sur connexion.</p>
-        <input type="text" class="input-field" placeholder="Code Ticket">
-        <button class="btn-connexion">CONNEXION</button>
-        <div class="info">
+        <div class="code">
+            <p>Entrez le code de votre Ticket et cliquez sur connexion.</p>
+            <input type="text" class="input-field" placeholder="Code Ticket">
+            <button class="btn-connexion">CONNEXION</button>
+            
+        </div>
+        <div class="auth hidden">
+            <p>Entrez le numéro et le mot de passe, puis cliquez sur connexion.</p>
+        <input type="text" class="input-field" placeholder="Nom d'utilisateur">
+        <input type="text" class="input-field" placeholder="Mot de passe">
+        <button class="btn-connexion">CONNEXION</button><br>
+        <button class="btn-connexion"></button><br>
+        
+        </div>
+      <div class="info">
             <h3>INFORMATIONS</h3>
             <p>LES TICKETS DE CONNEXION ILLIMITÉ SONT DISPONIBLES ICI APPELEZ LE 54 88 41 20</p>
         </div>
@@ -126,5 +140,24 @@
             </tr>
         </table>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const btnTicket = document.querySelector(".btn-ticket");
+            const btnCompte = document.querySelector(".btn-compte");
+            const divCode = document.querySelector(".code");
+            const divAuth = document.querySelector(".auth");
+
+            btnTicket.addEventListener("click", function () {
+                divCode.classList.remove("hidden");
+                divAuth.classList.add("hidden");
+            });
+
+            btnCompte.addEventListener("click", function () {
+                divCode.classList.add("hidden");
+                divAuth.classList.remove("hidden");
+            });
+        });
+    </script>
 </body>
 </html>
