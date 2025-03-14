@@ -126,6 +126,18 @@ document.body.innerHTML = `
         <button class="priceButton" data-price="10000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">10 000 Fcfa</button>
         <button class="priceButton" data-price="15000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">15 000 Fcfa</button>
     </div>
+/* <div class="modal">
+   
+    <div class="conteneur" style="position: absolute;top: 52%; left: 50%; transform: translate(-50%, -50%); border-radius:15px" id="conteneur">
+
+        <div class="modal-content">
+            <button class="close-btn"></button>
+<div id="mainPage" style="max-width: 400px; margin: auto; padding: 20px; font-family: Arial, sans-serif; text-align: center;">
+        <h3>Choisissez un montant</h3>
+        <button class="priceButton" data-price="5000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">5 000 Fcfa</button>
+        <button class="priceButton" data-price="10000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">10 000 Fcfa</button>
+        <button class="priceButton" data-price="15000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">15 000 Fcfa</button>
+    </div> */
 <div class="modal">
    
     <div class="conteneur" style="position: absolute;top: 52%; left: 50%; transform: translate(-50%, -50%); border-radius:15px" id="conteneur">
@@ -133,6 +145,7 @@ document.body.innerHTML = `
         <div class="modal-content">
             <button class="close-btn"></button>
         
+            <div id
             <div id="paymentPage" style="display: none;position: relative; width: 500px; height:200px;  padding-top: 20px; font-family: Arial, sans-serif; color: white; text-align: center;background:linear-gradient(to top, rgb(81 255 122), rgb(0 231 255 / 94%));">
                 <!--<img src="/home/esther/pageJS/WhatsApp Image 2025-02-26 at 17.18.15.jpeg"  style=" width:500px; height:200px; font-family: Arial, sans-serif;">-->
                 <div style= "position: absolute; color: white;top: 50%; left: 50%; transform: translate(-50%, -50%); ">
