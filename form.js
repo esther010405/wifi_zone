@@ -1,413 +1,224 @@
+// Injection du HTML et du CSS dans la page
 document.body.innerHTML = `
-    <style>
-     .input-container {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        margin: 10px 0;
-        position: relative;
-      }
-      .country-select {
-        display: flex;
-        align-items: center;
-        padding: 5px;
-        border-right: 1px solid #ccc;
-        cursor: pointer;
-        background-color: #ccc;
-        
-        left: 0;
-        top: 0;
-        bottom: 0;
-        z-index: 2; /* Mettre au-dessus de l'input */
-      }
-      .country-select img {
-        width: 20px;
-        height: 15px;
-        margin-right: 10px;
-      }
-      .phone-input {
-        padding: 5px 10px 5px 40px;
-        
-        border: 1px solid #ccc;
-        flex-grow: 1;
-        outline: none;
-        /* Décalage pour laisser de la place pour le drapeau et l'indicatif */
-      }
-      .phone-input:focus {
-        border-color: #4CAF50;
-      }
-      .country-dropdown {
-        position: absolute;
-        top: 35px;
-        left: 0;
-        width: 15%;
-        background-color: white;
-        border: 1px solid #ccc;
-        display: none;
-        z-index: 10;
-      }
-      .country-dropdown div {
-        padding: 10px;
-        cursor: pointer;
-      }
-      .country-dropdown div:hover {
-        background-color: #f0f0f0;
-      }   
-
-
-
-
-
-
-        .input-group {
-            width: 90%;
-            display:flex
-            margin:  auto;
-            display: flex;
-            align-items: center;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-            background: white;
-        }
-
-       
-    </style>
-    <div id="mainPage" style="max-width: 400px; margin: auto; padding: 20px; font-family: Arial, sans-serif; text-align: center;">
-        <h3>Choisissez un montant</h3>
-        <button class="priceButton" data-price="5000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">5 000 Fcfa</button>
-        <button class="priceButton" data-price="10000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">10 000 Fcfa</button>
-        <button class="priceButton" data-price="15000" style="background: green; color: white; padding: 10px; margin: 5px; border-radius: 5px; border: none;">15 000 Fcfa</button>
-    </div>
-
-    <div class="conteneur" style="position: absolute;top: 65%; left: 50%; transform: translate(-50%, -50%); " id="conteneur">
-
-
-    <div id="paymentPage" style="display: none;position: relative; width: 500px; height:200px;  padding-top: 20px; font-family: Arial, sans-serif; color: white; text-align: center;background:linear-gradient(to top, rgb(81 255 122), rgb(0 231 255 / 94%));">
-        <!--<img src="/home/esther/pageJS/WhatsApp Image 2025-02-26 at 17.18.15.jpeg"  style=" width:500px; height:200px; font-family: Arial, sans-serif;">-->
-        <div style= "position: absolute; color: white;top: 50%; left: 50%; transform: translate(-50%, -50%); ">
-           <img src="paie1.webp"  style="width: 100px; height: 60px;">
-            <p>Total à payer</p>
-            <h2 id="amountDisplay">0 Fcfa</h2>
-        </div>
-    </div>
-    
-    <div id="paymentOptions" style="display: none;padding-bottom:20px;  max-width: 500px; margin-top:-18px; margin-left:auto; margin-right:auto; ;  position: relative; text-align: center;">
-      <div style="background: linear-gradient(to top, rgb(49 229 109), rgb(81 255 122)); padding-bottom: 30px;">
-
-            <p style="color: #00f;">Sélectionner un mode de paiement</p>
-         <br>
-        </div>
-        <div style="background: white; flex-direction: column; align-items: center;">
-        <br><br>
-        <label for="phone" class="" style="display: flex; margin-left: 25px;">Nom et prénom</label>
-        <input type="text" id="name" placeholder="Nom et Prénoms" style="width: 90%; padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 5px;heigth:10px;">
-        <br><br>
-        
-        <label for="phone" class="" style="display: flex; margin-left: 25px;">Numéro de téléphone</label>
-        <div class="input-container" style="width: 90%; margin: 5px; justify-self: center">
-          <!-- Drapeau et code pays -->
-           <div  style="display:flex">
-            <div class="country-select" id="country-select">
-              <span id="country-flag">🇧🇯</span>
-              <span id="country-code">+229</span>
-              <span class="arrow">▼</span>
+    <div id="app" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; min-height: 100vh; position: relative;">
+        <div id="mainPage" style="text-align: center; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+            <h3 style="color: #2c3e50; margin-bottom: 25px;">Choisissez un montant</h3>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <button class="priceButton" data-price="5000" style="background: #27ae60; color: white; padding: 12px 20px; margin: 5px; border-radius: 8px; border: none; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">5 000 Fcfa</button>
+                <button class="priceButton" data-price="10000" style="background: #27ae60; color: white; padding: 12px 20px; margin: 5px; border-radius: 8px; border: none; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">10 000 Fcfa</button>
+                <button class="priceButton" data-price="15000" style="background: #27ae60; color: white; padding: 12px 20px; margin: 5px; border-radius: 8px; border: none; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">15 000 Fcfa</button>
             </div>
-            
-            <!-- Champ pour numéro de téléphone -->
-            <input id="phone" class="phone-input" type="tel" name="phone" placeholder="Entrez votre numéro" />
-            
-           </div>
-         
-          <!-- Menu déroulant pour la sélection du pays -->
-          <div class="country-dropdown" id="country-dropdown">
-            <div class="country-option" data-code="+229" data-country="BJ">🇧🇯 Bénin (+229)</div>
-            <div class="country-option" data-code="+228" data-country="TG">🇹🇬 Togo (+228)</div>
-            <div class="country-option" data-code="+234" data-country="NG">🇳🇬 Nigeria (+234)</div>
-            <div class="country-option" data-code="+226" data-country="BF">🇧🇫 Burkina Faso (+226)</div>
-            <!-- Ajouter d'autres pays ici -->
-          </div>
-        </div>
-                 
-            <button id="moov" class="paymentMethod" style="width: 70px;height: 70px;border-radius: 8px; background: none; border: none;">
-                <img src="moov.jpg" alt="Moov" style="width: 50px; height: 50px;">
-            </button>
-            <button id="mtn" class="paymentMethod" style="width: 70px;height: 70px;border-radius: 8px;background: none;border: none;">
-                <img src="mtn.jpg" alt="MTN" style="width: 50px; height: 50px;">
-            </button>
-            <button id="celtis" class="paymentMethod" style="width: 70px;height: 70px;border-radius: 8px;background: none; border: none;">
-                <img src="celtis.png" alt="celtis" style="width: 50px; height: 50px;">
-            </button>
-        <br><br>
-        <button id="pay" style="    background: #1a8719;color: white;border: none;padding: 15px; width: 75%;cursor: pointer;border-radius: 8px;"></button>
-        <p style="font-size: 12px; color: gray; margin-top: 10px;">🛡 Paiement sécurisé fourni par RICODE SYSTEMS</p>
         </div>
 
+        <div id="paymentPage" style="display: none; text-align: center; padding: 20px; background: linear-gradient(to bottom, #2ecc71, #27ae60); border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); color: white; position: relative; margin-top: 20px;">
+            <div style="padding: 20px;">
+                <img src="paie1.webp" style="width: 120px; height: 70px; margin-bottom: 15px; border-radius: 5px;">
+                <p style="margin: 0; font-size: 16px;">Total à payer</p>
+                <h2 id="amountDisplay" style="margin: 10px 0; font-size: 28px; font-weight: bold;">0 Fcfa</h2>
+            </div>
+        </div>
+
+        <div id="paymentOptions" style="display: none; background-color: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); padding: 20px; margin-top: 20px;">
+            <div style="background: linear-gradient(to right, #2ecc71, #27ae60); color: white; padding: 15px; border-radius: 8px 8px 0 0; margin: -20px -20px 20px -20px; text-align: center;">
+                <p style="margin: 0; font-size: 16px;">Sélectionner un mode de paiement</p>
+            </div>
+
+            <form id="paymentForm">
+                <div style="margin-bottom: 15px;">
+                    <label for="name" style="display: block; margin-bottom: 5px; font-weight: bold; color: #2c3e50; text-align: left;">Nom et prénom</label>
+                    <input type="text" id="name" placeholder="Ex: Jean DUPOIS" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px;">
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label for="phone" style="display: block; margin-bottom: 5px; font-weight: bold; color: #2c3e50; text-align: left;">Numéro de téléphone</label>
+                    <div style="display: flex; gap: 0; width: 100%;">
+                        <div id="country-select" style="display: flex; align-items: center; justify-content: center; padding: 0 10px; border: 1px solid #ddd; border-right: none; background-color: #f5f5f5; height: 40px; cursor: pointer; border-radius: 6px 0 0 6px; min-width: 90px; flex: 0 0 90px;">
+                            <span id="country-flag" style="margin-right: 8px; font-size: 18px;">🇧🇯</span>
+                            <span id="country-code" style="font-size: 14px;">+229</span>
+                            <span style="margin-left: 5px;">▼</span>
+                        </div>
+                        <input id="phone" type="tel" placeholder="Ex:01 65 00 00 00" style="flex: 1; padding: 10px; border: 1px solid #ddd; height: 20px; border-left: none; border-radius: 0 6px 6px 0; outline: none; font-size: 14px; min-width: 0;">
+                    </div>
+                    <div id="country-dropdown" style="position: absolute; width: 200px; background-color: white; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: none; z-index: 10; margin-top: 5px;">
+                        <div class="country-option" data-code="+229" data-country="BJ" style="padding: 10px; cursor: pointer; border-bottom: 1px solid #eee;">🇧🇯 Bénin (+229)</div>
+                        <div class="country-option" data-code="+228" data-country="TG" style="padding: 10px; cursor: pointer; border-bottom: 1px solid #eee;">🇹🇬 Togo (+228)</div>
+                        <div class="country-option" data-code="+234" data-country="NG" style="padding: 10px; cursor: pointer; border-bottom: 1px solid #eee;">🇳🇬 Nigeria (+234)</div>
+                        <div class="country-option" data-code="+226" data-country="BF" style="padding: 10px; cursor: pointer;">🇧🇫 Burkina Faso (+226)</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <p style="margin-bottom: 15px; color: #2c3e50; font-weight: bold;">Choisissez votre opérateur</p>
+                    <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+                        <div id="moov" class="paymentMethod" style="cursor: pointer; transition: all 0.3s;">
+                            <img src="moov.jpg" alt="Moov" style="width: 50px; height: 50px; border-radius: 8px; border: 2px solid transparent;">
+                        </div>
+                        <div id="mtn" class="paymentMethod" style="cursor: pointer; transition: all 0.3s;">
+                            <img src="mtn.jpg" alt="MTN" style="width: 50px; height: 50px; border-radius: 8px; border: 2px solid transparent;">
+                        </div>
+                        <div id="celtis" class="paymentMethod" style="cursor: pointer; transition: all 0.3s;">
+                            <img src="celtis.png" alt="Celtis" style="width: 50px; height: 50px; border-radius: 8px; border: 2px solid transparent;">
+                        </div>
+                    </div>
+                </div>
+
+                <button id="pay" type="button" style="width: 100%; background: #27ae60; color: white; border: none; padding: 15px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.3s; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);">Payer maintenant</button>
+                <p style="text-align: center; font-size: 12px; color: #7f8c8d; margin-top: 15px;">🛡 Paiement sécurisé par RICODE SYSTEMS</p>
+            </form>
         </div>
     </div>
-      <div  style="display:flex" class="input-group" style="    width: 90%; margin: 5px; justify-self: center">
-            <div   class="btn btn-outline-secondary dropdown-toggle" type="button" id="countryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <span id="country-flag">🇧🇯</span>
-              <span id="country-code">+229</span>
-              <span class="arrow">▼</span>
-            </div>
-             <ul class="dropdown-menu" id="countryList">
-            <!-- Champ pour numéro de téléphone -->
-            <input id="phone" class="phone-input" type="tel" name="phone" placeholder="Entrez votre numéro" />
-            
-     </div>
-
-
-
 `;
 
+// Ajout des styles CSS dynamiquement
 const style = document.createElement('style');
 style.innerHTML = `
-    .gray {
-        background-color: lightgray;
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    .red {
-        background-color:#1a8719 !important; /* Changed to a shade of green */
-
+    .priceButton:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        background: #2ecc71;
+    }
+    #pay:hover {
+        background: #239b56;
+    }
+    .country-option:hover {
+        background-color: #f0f0f0;
+    }
+    .paymentMethod img {
+        transition: all 0.3s ease;
+    }
+    .paymentMethod.selected img {
+        transform: scale(1.3);
+        border: 2px solid #2ecc71 !important;
+        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.3);
+    }
+    input:focus {
+        border-color: #2ecc71;
+        box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
     }
 `;
 document.head.appendChild(style);
 
+// Logique JavaScript
 const priceButtons = document.querySelectorAll(".priceButton");
 const paymentPage = document.getElementById("paymentPage");
 const mainPage = document.getElementById("mainPage");
 const amountDisplay = document.getElementById("amountDisplay");
 const paymentOptions = document.getElementById("paymentOptions");
+const payer = document.getElementById("pay");
+const phoneInput = document.getElementById("phone");
+const countrySelect = document.getElementById("country-select");
+const countryDropdown = document.getElementById("country-dropdown");
+const countryOptions = document.querySelectorAll(".country-option");
+
+// Opérateurs
 const moov = document.getElementById("moov");
 const mtn = document.getElementById("mtn");
 const celtis = document.getElementById("celtis");
-const payer = document.getElementById("pay");
 
+// Préfixes pour les opérateurs
+const moovPrefixes = ["55", "56", "60", "61", "62"];
+const mtnPrefixes = ["65", "66", "90", "91"];
+const celtisPrefixes = ["75", "76", "77"];
 
+// Variable pour suivre l'opérateur sélectionné
+let selectedOperator = null;
 
-const form = {
-  init: function () {
-  
-    document.querySelector("form").addEventListener("submit", form.submit);
-    document.querySelector("input[type='button']").addEventListener("click", form.validation);
-    form.input().addEventListener("focus", form.reset);
-    form.input().addEventListener("input", form.reset);
-    form.countrySelect().addEventListener("click", form.toggleCountryDropdown);
-    document.querySelectorAll(".country-option").forEach(optio9n => {
-      option.addEventListener("click", form.selectCountry);
-    });
-  },
-  
-  input: function () {
-    return document.querySelector("#phone");
-  },
-  countrySelect: function () {
-    return document.querySelector("#country-select");
-  },
-  countryDropdown: function () {
-    return document.querySelector("#country-dropdown");
-  },
-  selectCountry: function (event) {
-    const selectedOption = event.target;
-    const countryCode = selectedOption.getAttribute("data-code");
-    const countryFlag = selectedOption.textContent.trim().split(" ")[0]; // Extrait le drapeau
-
-    // Mettre à jour le drapeau et l'indicatif du pays
-    document.querySelector("#country-flag").textContent = countryFlag;
-    document.querySelector("#country-code").textContent = countryCode;
-
-    // Fermer le menu déroulant
-    form.countryDropdown().style.display = "none";
-
-    // Mettre l'indicatif au début du champ de numéro
-    form.input().value = countryCode + " ";
-  },
-  toggleCountryDropdown: function () {
-    const dropdown = form.countryDropdown();
-    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-    console.log("Click détecté, affichage du menu..."); 
-  },
-  reset: function () {
-    form.input().classList.remove("error");
-    form.input().classList.remove("success");
-  },
-  validation: function () {
-    let number = form.input().value.replace(/\s+/g, ''); // Supprimer les espaces
-    number = number.replace(/[^0-9]/g, ''); // Supprimer tout caractère non numérique
-    console.log("Numéro formaté:", number); // Debugging
-
-    const selectedCountryCode = form.countrySelect().dataset.code; // Le code du pays sélectionné
-
-    // Vérification spécifique pour chaque pays
-    if (selectedCountryCode === "+229") {
-      const regexBenin = /^01\d{8}$/;
-      if (!regexBenin.test(number)) {
-        alert("Le numéro du Bénin doit être au format 01 XX XX XX XX");
-        form.input().classList.add("error");
-        return false;
-      }
-    } else if (selectedCountryCode === "+228") {
-      const regexTogo = /^92\d{7}$/;
-      if (!regexTogo.test(number)) {
-        alert("Le numéro du Togo doit être au format 92 XXXXXX");
-        form.input().classList.add("error");
-        return false;
-      }
-    } else if (selectedCountryCode === "+234") {
-      const regexNigeria = /^0\d{10}$/;
-      if (!regexNigeria.test(number)) {
-        alert("Le numéro du Nigeria doit être au format 0XXXXXXXXXX");
-        form.input().classList.add("error");
-        return false;
-      }
-    } else if (selectedCountryCode === "+226") {
-      const regexBurkina = /^70\d{7}$/;
-      if (!regexBurkina.test(number)) {
-        alert("Le numéro du Burkina Faso doit être au format 70 XXXXXXX");
-        form.input().classList.add("error");
-        return false;
-      }
-    }
-
-    form.input().classList.add("success");
-    return true;
-  },
-  /* submit: function (e) {
-    e.preventDefault();
-    if (form.validation() === true) {
-      form.reset();
-      console.log("Numéro soumis avec succès.");
-    }
-  } */
-};
-
-
-
-
-
+// Afficher la page de paiement
 priceButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const price = button.getAttribute("data-price");
-    amountDisplay.innerText = price + " Fcfa";
-    payer.innerText = "Payer " + price + " Fcfa";
-    mainPage.style.display = "none";
-    paymentPage.style.display = "block";
-    paymentOptions.style.display = "block";
-  });
+    button.addEventListener("click", () => {
+        const price = button.getAttribute("data-price");
+        amountDisplay.textContent = `${price} Fcfa`;
+        payer.textContent = `Payer ${price} Fcfa`;
+        mainPage.style.display = "none";
+        paymentPage.style.display = "block";
+        paymentOptions.style.display = "block";
+    });
 });
-/* 
-// Éviter l'entrée de caractères non numériques
-phoneInputField.addEventListener("keypress", function (event) {
-    const char = String.fromCharCode(event.keyCode);
-    if (!/[0-9]/.test(char)) {
-        event.preventDefault(); // Bloque la saisie de caractères non numériques
+
+// Sélection du pays
+countrySelect.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const rect = countrySelect.getBoundingClientRect();
+    countryDropdown.style.position = "fixed";
+    countryDropdown.style.top = `${rect.bottom + window.scrollY}px`;
+    countryDropdown.style.left = `${rect.left + window.scrollX}px`;
+    countryDropdown.style.display = countryDropdown.style.display === "block" ? "none" : "block";
+});
+
+// Sélection d'un pays dans la liste
+countryOptions.forEach(option => {
+    option.addEventListener("click", () => {
+        const countryCode = option.getAttribute("data-code");
+        const countryFlag = option.textContent.trim().split(" ")[0];
+        document.getElementById("country-flag").textContent = countryFlag;
+        document.getElementById("country-code").textContent = countryCode;
+        countryDropdown.style.display = "none";
+    });
+});
+
+// Sélection d'un opérateur
+[moov, mtn, celtis].forEach(operator => {
+    operator.addEventListener("click", () => {
+        if (selectedOperator) {
+            selectedOperator.classList.remove("selected");
+        }
+        operator.classList.add("selected");
+        selectedOperator = operator;
+    });
+});
+
+// Détection des préfixes pour les opérateurs
+phoneInput.addEventListener("input", function() {
+    let value = this.value.trim();
+    if (selectedOperator && !selectedOperator.classList.contains("auto-selected")) {
+        selectedOperator.classList.remove("selected");
+        selectedOperator = null;
+    }
+    if (moovPrefixes.some(prefix => value.startsWith(prefix))) {
+        if (selectedOperator && selectedOperator.id !== "moov") {
+            selectedOperator.classList.remove("selected");
+        }
+        moov.classList.add("selected");
+        selectedOperator = moov;
+        selectedOperator.classList.add("auto-selected");
+    } else if (mtnPrefixes.some(prefix => value.startsWith(prefix))) {
+        if (selectedOperator && selectedOperator.id !== "mtn") {
+            selectedOperator.classList.remove("selected");
+        }
+        mtn.classList.add("selected");
+        selectedOperator = mtn;
+        selectedOperator.classList.add("auto-selected");
+    } else if (celtisPrefixes.some(prefix => value.startsWith(prefix))) {
+        if (selectedOperator && selectedOperator.id !== "celtis") {
+            selectedOperator.classList.remove("selected");
+        }
+        celtis.classList.add("selected");
+        selectedOperator = celtis;
+        selectedOperator.classList.add("auto-selected");
     }
 });
 
-// Préfixes Moov par pays
-const moovPrefixes = [
-    "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "58", "55", "45", // Bénin
-    "01", "02",  // Côte d’Ivoire
-    "60", "61", "62", "66", "67",  // Togo
-    "66", "67",  // Burkina Faso
-    "88", "89",  // Niger
-    "05", "06",  // Gabon
-    , "98", "99", "95", "94",  // Tchad
-    "75", "76"   // Centrafrique
-];
-
-// Préfixes MTN par pays (Exemples)
-const mtnPrefixes = [
-    "50", "51", "52", "53", "54", "56", "57", "97", "91", "96", "66", "61", "62", "67", "92",  // Bénin
-    "07", "08",  // Côte d’Ivoire
-    "90", "91", "92", "93", "94", "95",  // Togo
-    "70", "71", "72", "73", "74",  // Burkina Faso
-    "80", "81", "82", "83", "84",  // Niger
-    "77", "78",  // Gabon
-    "97",   // Tchad
-];
-
-// Préfixes Celtis (Exemples)
-const celtisPrefixes = [
-    "40", "41", "42", "43", "44", "46", "47", "48", "49" // Exemple de préfixes Celtis
-];
-
-phoneInputField.addEventListener("input", function () {
-    let value = phoneInputField.value.trim();
-
-    // Réinitialiser les couleurs des boutons
-    moov.classList.add("gray");
-    mtn.classList.add("gray");
-    celtis.classList.add("gray");
-
-    // Si l'input est vide, réinitialiser les boutons
-    if (value === "") {
-        moov.classList.remove("red");
-        moov.classList.add("orange");
-        mtn.classList.remove("red");
-        mtn.classList.add("orange");
-        celtis.classList.remove("red");
-        celtis.classList.add("orange");
+// Bouton de paiement
+payer.addEventListener("click", () => {
+    const name = document.getElementById("name").value;
+    const phone = phoneInput.value;
+    if (!name || !phone || !selectedOperator) {
+        alert("Veuillez remplir tous les champs et sélectionner un opérateur.");
         return;
     }
-
-
-
-    // Vérifier le préfixe et changer la couleur
-    if (moovPrefixes.some(prefix => value.startsWith(prefix))) {
-        moov.classList.remove("gray");
-        moov.classList.add("red");
-    }
-    if (mtnPrefixes.some(prefix => value.startsWith(prefix))) {
-        mtn.classList.remove("gray");
-        mtn.classList.add("red");
-    }
-    if (celtisPrefixes.some(prefix => value.startsWith(prefix))) {
-        celtis.classList.remove("gray");
-        celtis.classList.add("red");
-    }
+    const operatorName = selectedOperator.id.toUpperCase();
+    alert(`Paiement de ${amountDisplay.textContent} en cours pour ${name} (${phone}) via ${operatorName}.`);
 });
 
-document.getElementById("pay").addEventListener("click", function () {
-    alert("Paiement en cours...");
-});
- */
-
-
-
-
-
-
-
-
-
-const imgmoov = document.querySelector("#moov img");
-const imgmtn = document.querySelector("#mtn img");
-const imgceltis = document.querySelector("#celtis img");
-
-const moovPrefixes = ["55", "56"]; // Ajoute les préfixes corrects
-const mtnPrefixes = ["65", "66"];
-const celtisPrefixes = ["75", "76"];
-
-document.getElementById("phoneInput").addEventListener("input", function () {
-    let value = this.value.trim();
-
-    // Réinitialiser la taille des images
-    [moov, mtn, celtis].forEach(img => {
-        img.style.width = "35px";
-        img.style.height = "35px";
-    });
-
-    if (moovPrefixes.some(prefix => value.startsWith(prefix))) {
-        moov.style.width = "50px";
-        moov.style.height = "50px";
-    }
-    if (mtnPrefixes.some(prefix => value.startsWith(prefix))) {
-        mtn.style.width = "50px";
-        mtn.style.height = "50px";
-    }
-    if (celtisPrefixes.some(prefix => value.startsWith(prefix))) {
-        celtis.style.width = "50px";
-        celtis.style.height = "50px";
+// Fermer le dropdown si on clique ailleurs
+document.addEventListener("click", (e) => {
+    if (!countrySelect.contains(e.target) && !countryDropdown.contains(e.target)) {
+        countryDropdown.style.display = "none";
     }
 });
